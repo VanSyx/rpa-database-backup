@@ -7,8 +7,9 @@ from datetime import datetime
 from email.message import EmailMessage
 from dotenv import load_dotenv
 
-load_dotenv()
 
+load_dotenv()
+       
 email_sender = os.getenv("email_sender")
 email_password = os.getenv("email_password")
 email_receiver = os.getenv("email_receiver")
@@ -46,7 +47,7 @@ def backup_database():
         send_email("Bản sao lưu cơ sở dữ liệu RPA thất bại",
                    message=f"Sao lưu cơ sở dữ liệu thất bại: {e}")
 
-schedule.every().day.at("10:41").do(backup_database)
+schedule.every().day.at("00:00").do(backup_database)
 
 print("00h00 hàng ngày sẽ sao lưu cơ sở dữ liệu RPA")
 while True:
